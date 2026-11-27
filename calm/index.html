@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>صالون 24 ساعة للحلاقة | حي الندى</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f2ea;--card:#fffdf8;--g:#1f3b34;--g2:#2c5248;--tan:#b0855a;--ink:#22201c;--mute:#77716a;--line:#e8e1d5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"IBM Plex Sans Arabic",sans-serif;background:var(--bg);color:var(--ink);padding-bottom:92px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.w{padding-inline:20px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .pole{width:8px;height:30px;border-radius:4px;background:repeating-linear-gradient(-40deg,#b3362f 0 5px,#fff 5px 10px,#2b4b8a 10px 15px,#fff 15px 20px);box-shadow:0 0 0 1px #d8d0c4}
+.logo b{display:block;font-size:17px;font-weight:700;line-height:1.1}
+.logo small{font-size:11px;color:var(--mute)}
+.open{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--g);background:#e4ece8;padding:6px 12px;border-radius:999px}
+.open i{width:7px;height:7px;border-radius:50%;background:#2e9a5e}
+
+.hero{padding:6px 20px 0}
+.hero .ph{border-radius:24px;overflow:hidden}
+.hero img{display:block;width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:52% 58%;filter:saturate(.8) sepia(.06)}
+h1{font-size:30px;font-weight:700;line-height:1.35;margin-top:22px}
+.lede{color:var(--mute);font-size:16px;line-height:1.75;margin-top:8px}
+.rate{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:var(--mute)}
+.rate b{color:var(--ink);font-weight:700}
+.rate .st{color:var(--tan);letter-spacing:2px}
+
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:22px 20px 0}
+.quick a{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 6px;text-align:center;font-size:13px;font-weight:600}
+.quick a svg{display:block;width:24px;height:24px;margin:0 auto 6px;color:var(--g)}
+.quick a.main{background:var(--g);color:#fff;border-color:var(--g)}
+.quick a.main svg{color:#fff}
+
+section{padding-top:44px}
+h2{font-size:22px;font-weight:700}
+.h2s{font-size:14px;color:var(--mute);margin-top:4px}
+.list{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 18px}
+.it{display:flex;align-items:center;gap:14px;padding:16px 0}
+.it+.it{border-top:1px solid var(--line)}
+.it .ic{flex:none;width:42px;height:42px;border-radius:12px;background:#eef2ef;color:var(--g);display:flex;align-items:center;justify-content:center}
+.it .ic svg{width:22px;height:22px}
+.it h3{font-size:16px;font-weight:600}
+.it p{font-size:13px;color:var(--mute)}
+.it .pr{margin-inline-start:auto;font-size:16px;font-weight:700;white-space:nowrap}
+.it .pr.q{font-size:12px;color:var(--mute);font-weight:500}
+
+.hours{margin-top:14px;display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+.hours .big{background:var(--g);color:#fff;border-radius:20px;padding:20px}
+.hours .big b{display:block;font-size:44px;font-weight:700;line-height:1}
+.hours .big span{font-size:13px;opacity:.85}
+.hours .now{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.hours .now small{font-size:12px;color:var(--mute)}
+.hours .now b{font-size:24px;font-weight:700;margin-top:2px}
+.hours .now em{font-style:normal;font-size:12px;color:#2e9a5e;font-weight:600;margin-top:2px}
+
+.book{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.ql{font-size:13px;color:var(--mute);margin-top:14px}
+.ql:first-child{margin-top:0}
+.ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.ch button{font:inherit;font-size:14px;font-weight:500;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.ch button.on{background:var(--g);border-color:var(--g);color:#fff}
+.go{display:flex;justify-content:center;align-items:center;gap:8px;height:54px;margin-top:18px;border-radius:16px;background:var(--g);color:#fff;font-weight:600;font-size:16px}
+.go svg{width:20px;height:20px}
+
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.pics img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;display:block;filter:saturate(.8) sepia(.06)}
+
+.map{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;align-items:center;gap:14px}
+.map .pin{flex:none;width:52px;height:52px;border-radius:16px;background:#f1e7da;color:var(--tan);display:flex;align-items:center;justify-content:center}
+.map .pin svg{width:26px;height:26px}
+.map h3{font-size:16px;font-weight:600}
+.map p{font-size:13px;color:var(--mute)}
+.map a{margin-inline-start:auto;font-size:13px;font-weight:600;color:var(--g);border:1px solid var(--g);border-radius:999px;padding:8px 14px;white-space:nowrap}
+
+footer{text-align:center;color:var(--mute);font-size:12px;padding:36px 20px 0}
+.dock{position:fixed;inset-inline:0;bottom:0;padding:10px 16px 16px;background:linear-gradient(180deg,rgba(246,242,234,0),var(--bg) 30%);display:grid;grid-template-columns:1fr auto;gap:10px}
+.dock a{display:flex;justify-content:center;align-items:center;gap:8px;height:56px;border-radius:16px;font-weight:600}
+.dock .wa{background:var(--g);color:#fff}
+.dock .cl{width:56px;background:var(--card);border:1px solid var(--line);color:var(--g)}
+.dock svg{width:22px;height:22px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo"><span class="pole" aria-hidden="true"></span><div><b>صالون 24 ساعة</b><small>للحلاقة الرجالية</small></div></div>
+  <span class="open"><i></i>مفتوح الحين</span>
+</header>
+
+<main>
+<section class="hero" style="padding-top:6px" aria-labelledby="h">
+  <div class="ph"><img src="img/p2.jpg" alt="من داخل صالون 24 ساعة"></div>
+  <h1 id="h">حلاقة مرتبة في حي الندى، بأي ساعة تناسبك</h1>
+  <p class="lede">صالون رجالي مفتوح 24 ساعة طول الأسبوع. احجز دورك برسالة، وتعال على وقتك.</p>
+  <div class="rate"><span class="st">★★★★★</span><b>4.7</b>من أكثر من 620 تقييم على قوقل</div>
+</section>
+
+<nav class="quick" aria-label="وصول سريع">
+  <a class="main" href="#book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/><path d="M16 3v4M8 3v4M4 11h16"/></svg>احجز</a>
+  <a href="tel:+966530244559"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg>اتصل</a>
+  <a href="https://maps.google.com/?cid=15077935763009111223"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.66 16.66l-4.24 4.24a2 2 0 0 1 -2.83 0l-4.25 -4.24a8 8 0 1 1 11.32 0z"/></svg>الموقع</a>
+</nav>
+
+<section class="w" aria-labelledby="s1">
+  <h2 id="s1">الخدمات والأسعار</h2>
+  <p class="h2s">تعرف السعر قبل ما تجلس على الكرسي</p>
+  <div class="list">
+    <div class="it"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/><path d="M8.6 8.6l10.4 10.4"/><path d="M8.6 15.4l10.4 -10.4"/></svg></span><div><h3>حلاقة شعر</h3><p>قص وتحديد على ذوقك</p></div><span class="pr q">يحدده الصالون</span></div>
+    <div class="it"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v4h-10z"/><path d="M12 7v4"/><path d="M12 11a2 2 0 0 1 2 2v6a2 2 0 1 1 -4 0v-6a2 2 0 0 1 2 -2z"/></svg></span><div><h3>تحديد وحلاقة لحية</h3><p>تحديد بالموس</p></div><span class="pr">30 ريال</span></div>
+    <div class="it"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v2"/><path d="M12 3v2"/><path d="M16 3v2"/><path d="M9 12v6a3 3 0 0 0 6 0v-6h-6z"/><path d="M8 5h8l-1 4h-6z"/></svg></span><div><h3>شعر ولحية</h3><p>الباقة الكاملة</p></div><span class="pr q">يحدده الصالون</span></div>
+  </div>
+</section>
+
+<section class="w" aria-labelledby="s2">
+  <h2 id="s2">أوقات الدوام</h2>
+  <div class="hours">
+    <div class="big"><b>24</b><span>ساعة في اليوم، 7 أيام في الأسبوع</span></div>
+    <div class="now"><small>الساعة الحين</small><b id="clk">—</b><em>● مفتوحين</em></div>
+  </div>
+</section>
+
+<section class="w" id="book" aria-labelledby="s3">
+  <h2 id="s3">احجز دورك</h2>
+  <p class="h2s">اختر، ويوصل طلبك للصالون على الواتساب</p>
+  <div class="book">
+    <p class="ql">الخدمة</p>
+    <div class="ch" data-g="s"><button class="on">حلاقة شعر</button><button>لحية</button><button>شعر ولحية</button></div>
+    <p class="ql">الوقت</p>
+    <div class="ch" data-g="t"><button class="on">الحين</button><button>بعد ساعة</button><button>الليلة</button><button>بكرة</button></div>
+    <a class="go" id="go" href="https://wa.me/966530244559"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>أرسل الحجز بالواتساب</a>
+  </div>
+</section>
+
+<section class="w" aria-labelledby="s4">
+  <h2 id="s4">من الصالون</h2>
+  <div class="pics"><img src="img/p1.jpg" alt="واجهة صالون 24 ساعة" style="object-position:50% 28%"><img src="img/p4.jpg" alt="من فريق الصالون" style="object-position:50% 22%"></div>
+</section>
+
+<section class="w" aria-labelledby="s5">
+  <h2 id="s5">الموقع</h2>
+  <div class="map"><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/><path d="M17.66 16.66l-4.24 4.24a2 2 0 0 1 -2.83 0l-4.25 -4.24a8 8 0 1 1 11.32 0z"/></svg></span><div><h3>حي الندى</h3><p>الرياض</p></div><a href="https://maps.google.com/?cid=15077935763009111223">الاتجاهات</a></div>
+</section>
+</main>
+
+<footer>صالون 24 ساعة للحلاقة · <span dir="ltr">053 024 4559</span></footer>
+<div class="dock">
+  <a class="wa" href="https://wa.me/966530244559"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>احجز بالواتساب</a>
+  <a class="cl" href="tel:+966530244559" aria-label="اتصل"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg></a>
+</div>
+<script>
+document.getElementById('clk').textContent=new Intl.DateTimeFormat('ar-SA-u-nu-latn',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Riyadh'}).format(new Date());
+const st={s:'حلاقة شعر',t:'الحين'};
+document.querySelectorAll('.ch').forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));st[g.dataset.g]=b.textContent;document.getElementById('go').href='https://wa.me/966530244559?text='+encodeURIComponent('السلام عليكم، أبي أحجز '+st.s+' '+st.t);});
+</script>
+</body>
+</html>

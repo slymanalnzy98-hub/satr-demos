@@ -126,7 +126,19 @@ body.night .rev{background:#1f1f1f}
 body.night .rev a{background:var(--g);color:#121212}
 body.night .open{background:#1f2a22;color:#8fd6a8}
 body.night .badge{background:rgba(27,27,27,.92);color:#f1ede6}
-body.night .dock{background:linear-gradient(180deg,rgba(18,18,18,0),#121212 30%)}
+body.night .steps{display:flex;gap:6px;margin-bottom:6px}
+.steps span{flex:1;text-align:center;font-size:11px;font-weight:600;color:var(--mute);padding:6px 0;border-bottom:2px solid var(--line)}
+.steps span.on{color:var(--ink);border-color:var(--tan)}
+.ql small{font-size:11px}
+.in{display:block;width:100%;margin-top:8px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:15px;padding:0 14px}
+.in[hidden]{display:none}
+.in:focus{outline:2px solid var(--tan);outline-offset:1px}
+.sum{display:flex;justify-content:space-between;gap:10px;margin-top:18px;padding:14px;border-radius:14px;background:var(--bg);border:1px dashed var(--line)}
+.sum small{display:block;font-size:11px;color:var(--mute)}
+.sum b{font-size:14px;font-weight:600}
+.sum .pz{text-align:left}
+.note{font-size:12px;color:var(--mute);text-align:center;margin-top:10px;line-height:1.6}
+.dock{background:linear-gradient(180deg,rgba(18,18,18,0),#121212 30%)}
 body.night .emb iframe{filter:invert(.9) hue-rotate(180deg) grayscale(.4)}
 body{transition:background .5s,color .5s}
 @media (prefers-reduced-motion:reduce){.hero img,.logo .pole{animation:none}}
@@ -140,15 +152,15 @@ body{transition:background .5s,color .5s}
 <body>
 <header class="top">
   <div class="logo"><span class="pole" aria-hidden="true"></span><div><b>صالون 24 ساعة</b><small>للحلاقة الرجالية</small></div></div>
-  <div class="tr"><button class="mode" id="mode" aria-label="بدّل بين النهار والليل">☾</button><span class="open"><i></i>مفتوح الحين</span></div>
+  <div class="tr"><button class="mode" id="mode" aria-label="بدّل بين النهار والليل">☾</button><span class="open"><i></i>نستقبلك الحين</span></div>
 </header>
 
 <main>
 <section class="hero" style="padding-top:6px" aria-labelledby="h">
-  <div class="ph"><img src="img/p2.jpg" alt="من داخل صالون 24 ساعة"><span class="badge"><i></i>مفتوح الحين · <b id="clk2">—</b></span></div>
+  <div class="ph"><img src="img/p2.jpg" alt="من داخل صالون 24 ساعة"><span class="badge"><i></i>الحين <b id="clk2">—</b> · الكرسي جاهز</span></div>
   <p class="greet" id="greet">مساء الخير</p>
   <h1 id="h">حلاقة مرتبة في حي الندى، بأي ساعة تناسبك</h1>
-  <p class="lede">صالون رجالي مفتوح 24 ساعة طول الأسبوع. احجز دورك برسالة، وتعال على وقتك.</p>
+  <p class="lede">صالون رجالي يشتغل على مدار الساعة، طول الأسبوع. احجز دورك برسالة، وتعال على وقتك.</p>
   <div class="rate"><span class="st">★★★★★</span><b>4.7</b>من أكثر من 620 تقييم على قوقل</div>
 </section>
 
@@ -182,7 +194,7 @@ body{transition:background .5s,color .5s}
   <h2 id="s2">أوقات الدوام</h2>
   <div class="hours">
     <div class="big"><b>24</b><span>ساعة في اليوم، 7 أيام في الأسبوع</span></div>
-    <div class="now"><small>الساعة الحين</small><b id="clk">—</b><em>● مفتوحين</em></div>
+    <div class="now"><small>الساعة الحين</small><b id="clk">—</b><em>● نستقبلك الحين</em></div>
   </div>
 </section>
 
@@ -190,11 +202,21 @@ body{transition:background .5s,color .5s}
   <h2 id="s3">احجز دورك</h2>
   <p class="h2s">اختر، ويوصل طلبك للصالون على الواتساب</p>
   <div class="book">
+    <div class="steps"><span class="on">1 الخدمة</span><span>2 الوقت</span><span>3 بياناتك</span></div>
     <p class="ql">الخدمة</p>
-    <div class="ch" data-g="s"><button class="on">حلاقة شعر</button><button>لحية</button><button>شعر ولحية</button></div>
+    <div class="ch" data-g="s"><button class="on" data-p="">حلاقة شعر</button><button data-p="30">لحية</button><button data-p="">شعر ولحية</button></div>
+    <p class="ql">كم شخص؟</p>
+    <div class="ch" data-g="n"><button class="on">شخص</button><button>شخصين</button><button>3 أو أكثر</button></div>
     <p class="ql">الوقت</p>
-    <div class="ch" data-g="t"><button class="on">الحين</button><button>بعد ساعة</button><button>الليلة</button><button>بكرة</button></div>
+    <div class="ch" data-g="t"><button class="on">الحين</button><button>بعد ساعة</button><button>الليلة</button><button>بكرة</button><button data-x="1">وقت محدد</button></div>
+    <input class="in" id="tx" type="time" hidden aria-label="الوقت المحدد">
+    <p class="ql">اسمك</p>
+    <input class="in" id="nm" placeholder="عشان يعرفك الحلاق" autocomplete="given-name">
+    <p class="ql">ملاحظة <small>(اختياري)</small></p>
+    <input class="in" id="nt" placeholder="مثلاً: أبي حلاق معيّن، أو قصة معيّنة">
+    <div class="sum"><div><small>طلبك</small><b id="sm">حلاقة شعر · شخص · الحين</b></div><div class="pz"><small>السعر</small><b id="pz">يحدده الصالون</b></div></div>
     <a class="go" id="go" href="https://wa.me/966530244559"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>أرسل الحجز بالواتساب</a>
+    <p class="note">ينفتح واتساب الصالون والرسالة جاهزة. الصالون يرد عليك ويأكد الدور.</p>
   </div>
 </section>
 
@@ -223,7 +245,7 @@ body{transition:background .5s,color .5s}
 <section class="w" aria-labelledby="sf">
   <h2 id="sf">أسئلة تتكرر</h2>
   <div class="faq">
-    <details open><summary>متى تفتحون؟</summary><p>مفتوحين 24 ساعة، كل أيام الأسبوع.</p></details>
+    <details open><summary>متى تفتحون؟</summary><p>على مدار الساعة، كل أيام الأسبوع. ما نسكّر.</p></details>
     <details><summary>كيف أحجز؟</summary><p>اختر الخدمة والوقت من قسم «احجز دورك»، ويوصل طلبك للصالون بالواتساب.</p></details>
     <details><summary>كم الأسعار؟</summary><p>تحديد اللحية 30 ريال. باقي الخدمات اضغط «اسأل عن السعر» ويردون عليك.</p></details>
     <details><summary>وين مكانكم؟</summary><p>حي الندى في الرياض. اضغط «الاتجاهات» ويوديك قوقل ماب للصالون.</p></details>
@@ -231,7 +253,7 @@ body{transition:background .5s,color .5s}
 </section>
 </main>
 
-<footer><div class="flogo"><span class="pole" aria-hidden="true"></span><b>صالون 24 ساعة</b></div><p>للحلاقة الرجالية · حي الندى، الرياض</p><p>مفتوح 24 ساعة · <a href="tel:+966530244559" dir="ltr">053 024 4559</a></p></footer>
+<footer><div class="flogo"><span class="pole" aria-hidden="true"></span><b>صالون 24 ساعة</b></div><p>للحلاقة الرجالية · حي الندى، الرياض</p><p>على مدار الساعة · <a href="tel:+966530244559" dir="ltr">053 024 4559</a></p></footer>
 <div class="dock">
   <a class="wa" href="https://wa.me/966530244559"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"/><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"/></svg>احجز بالواتساب</a>
   <a class="cl" href="tel:+966530244559" aria-label="اتصل"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"/></svg></a>
@@ -239,7 +261,7 @@ body{transition:background .5s,color .5s}
 <script>
 const T=new Intl.DateTimeFormat('ar-SA-u-nu-latn',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Riyadh'}).format(new Date());
 document.getElementById('clk').textContent=T;document.getElementById('clk2').textContent=T;
-document.getElementById('share').onclick=()=>{const d={title:'صالون 24 ساعة',text:'صالون حلاقة مفتوح 24 ساعة في حي الندى',url:location.href};navigator.share?navigator.share(d):window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url))};
+document.getElementById('share').onclick=()=>{const d={title:'صالون 24 ساعة',text:'صالون حلاقة يشتغل على مدار الساعة في حي الندى',url:location.href};navigator.share?navigator.share(d):window.open('https://wa.me/?text='+encodeURIComponent(d.text+' '+d.url))};
 
 const H=+new Intl.DateTimeFormat('en-GB',{hour:'numeric',hourCycle:'h23',timeZone:'Asia/Riyadh'}).format(new Date());
 const night=H>=18||H<6;
@@ -249,8 +271,22 @@ const mb=document.getElementById('mode');
 const setM=n=>{document.body.classList.toggle('night',n);mb.textContent=n?'☀':'☾'};
 setM(night);mb.onclick=()=>setM(!document.body.classList.contains('night'));
 document.querySelectorAll('.score b,.hours .big b').forEach(el=>{const to=parseFloat(el.textContent),dec=String(el.textContent).includes('.');let t0=null;const f=ts=>{t0=t0||ts;const k=Math.min((ts-t0)/1200,1);el.textContent=dec?(to*k).toFixed(1):Math.round(to*k);if(k<1)requestAnimationFrame(f)};const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){requestAnimationFrame(f);io.disconnect()}});io.observe(el)});
-const st={s:'حلاقة شعر',t:'الحين'};
-document.querySelectorAll('.ch').forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));st[g.dataset.g]=b.textContent;document.getElementById('go').href='https://wa.me/966530244559?text='+encodeURIComponent('السلام عليكم، أبي أحجز '+st.s+' '+st.t);});
+const st={s:'حلاقة شعر',n:'شخص',t:'الحين',p:''};
+const $=i=>document.getElementById(i);
+const steps=document.querySelectorAll('.steps span');
+function upd(){
+  const t=st.t==='وقت محدد'?($('tx').value?'الساعة '+$('tx').value:'وقت محدد'):st.t;
+  $('sm').textContent=st.s+' · '+st.n+' · '+t;
+  $('pz').textContent=st.p?st.p+' ريال'+(st.n!=='شخص'?' للشخص':''):'يحدده الصالون';
+  const nm=$('nm').value.trim(),nt=$('nt').value.trim();
+  steps.forEach((x,i)=>x.classList.toggle('on',i===0||(i===1&&st.t)||(i===2&&nm)));
+  let m='السلام عليكم، أبي أحجز '+st.s+' ('+st.n+') '+t;
+  if(nm)m+='\nالاسم: '+nm; if(nt)m+='\nملاحظة: '+nt;
+  $('go').href='https://wa.me/966530244559?text='+encodeURIComponent(m);
+}
+document.querySelectorAll('.ch').forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));st[g.dataset.g]=b.textContent;if(g.dataset.g==='s')st.p=b.dataset.p;if(g.dataset.g==='t')$('tx').hidden=!b.dataset.x;upd();});
+['tx','nm','nt'].forEach(i=>$(i).oninput=upd);
+upd();
 </script>
 </body>
 </html>

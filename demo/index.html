@@ -212,7 +212,6 @@ body{transition:background .5s,color .5s}
   <h2 id="s3">احجز دورك</h2>
   <p class="h2s">اختر، ويوصل طلبك للصالون على الواتساب</p>
   <div class="book">
-    <div class="steps"><span class="on">1 الخدمة</span><span>2 الوقت</span><span>3 بياناتك</span></div>
     <p class="ql">الخدمة</p>
     <div class="ch" data-g="s"><button class="on" data-p="50">حلاقة شعر</button><button data-p="30">لحية</button><button data-p="70">شعر ولحية</button></div>
     <p class="ql">كم شخص؟</p>
@@ -283,7 +282,7 @@ document.getElementById('greet').textContent=g;
 document.querySelectorAll('.score b,.hours .big b:not(.nc)').forEach(el=>{const to=parseFloat(el.textContent),dec=String(el.textContent).includes('.');let t0=null;const f=ts=>{t0=t0||ts;const k=Math.min((ts-t0)/1200,1);el.textContent=dec?(to*k).toFixed(1):Math.round(to*k);if(k<1)requestAnimationFrame(f)};const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){requestAnimationFrame(f);io.disconnect()}});io.observe(el)});
 const st={s:'حلاقة شعر',n:'شخص',t:'الحين',p:'50'};
 const $=i=>document.getElementById(i);
-const steps=document.querySelectorAll('.steps span');
+const steps=[];
 function upd(){
   const t=st.t==='وقت محدد'?($('tx').value?'الساعة '+$('tx').value:'وقت محدد'):st.t;
   $('sm').textContent=st.s+' · '+st.n+' · '+t;

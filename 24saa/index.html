@@ -14,7 +14,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:16px 1
 nav b{font-size:24px;font-weight:800}
 nav span{background:transparent;border:1px solid var(--yel);color:var(--yel);font-weight:700;font-size:14px;padding:4px 14px;border-radius:999px}
 .hero{background:#0f0f0f;color:#fff;padding:18px 0 0;overflow:hidden}
-.hero h1{font-size:56px;font-weight:900;line-height:1.05;letter-spacing:-.01em;padding-inline:18px}
+.now{padding-inline:18px;color:#8c8c8c;font-size:15px;font-weight:600}
+.clk{padding-inline:18px;font-size:120px;font-weight:900;line-height:1;color:var(--yel);direction:ltr;text-align:right;letter-spacing:-.03em}
+.clk small{font-size:40px;margin-inline-start:8px;color:#f3ede4}
+.hero h1{font-size:40px;font-weight:900;line-height:1.15;padding-inline:18px}
 .hero h1 em{font-style:normal;color:var(--yel)}
 .hero p{font-size:17px;line-height:1.5;padding:14px 18px 0;color:#cfcfcf;font-weight:500}
 .btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:999px;background:var(--yel);color:#0f0f0f;font-weight:800;font-size:18px;margin:20px 18px 0}
@@ -26,6 +29,10 @@ nav span{background:transparent;border:1px solid var(--yel);color:var(--yel);fon
 .big{padding:40px 18px 10px}
 .big h2{font-size:44px;font-weight:800;line-height:1}
 .big h2 em{font-style:normal;color:var(--org)}
+.sub{color:#cfcfcf;margin-top:10px;font-size:16px}
+.dial{display:block;width:100%;max-width:340px;margin:26px auto 0}
+.facts{display:flex;justify-content:space-around;margin-top:22px;text-align:center;color:#8c8c8c;font-size:14px;font-weight:600}
+.facts b{display:block;color:#f3ede4;font-size:30px;font-weight:900}
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:22px}
 .stats div{border-radius:20px;color:#f3ede4!important;padding:18px 8px;text-align:center;font-weight:700;font-size:14px}
 .stats b{display:block;font-size:40px;line-height:1.1;font-weight:900;color:var(--yel)}
@@ -56,7 +63,9 @@ footer p{color:#8c8c8c}
 <body>
 <nav><b>24 ساعة</b><span>مفتوح الحين</span></nav>
 <header class="hero">
-  <h1>حلاقتك<br><em>بأي ساعة</em><br>تبيها</h1>
+  <p class="now">الساعة الحين في الرياض</p>
+  <div class="clk" id="clk">2:41</div>
+  <h1 id="msg">الفجر، وحنا فاتحين</h1>
   <p>صالون حلاقة رجالي في حي الندى. الباب مفتوح ليل ونهار.</p>
   <a class="btn" href="https://wa.me/966530244559">احجز بالواتساب</a>
   <div class="pills" aria-hidden="true">
@@ -68,11 +77,9 @@ footer p{color:#8c8c8c}
 
 <section class="big" aria-labelledby="s1">
   <h2 id="s1">نسكّر؟ <em>ولا مرة.</em></h2>
-  <div class="stats">
-    <div style="background:#1b1b1b"><b>24</b>ساعة</div>
-    <div style="background:#1b1b1b"><b>4.7</b>على قوقل</div>
-    <div style="background:#1b1b1b"><b>620+</b>تقييم</div>
-  </div>
+  <p class="sub">كل ساعة في اليوم الكرسي جاهز. الأصفر هو وقتك الحين.</p>
+  <svg class="dial" viewBox="0 0 300 300" id="dial" aria-hidden="true"></svg>
+  <div class="facts"><div><b>4.7</b>على قوقل</div><div><b>620+</b>تقييم</div><div><b>7/7</b>أيام</div></div>
 </section>
 <section class="menu" aria-labelledby="s2">
   <h2 id="s2">الأسعار</h2>
@@ -93,5 +100,20 @@ footer p{color:#8c8c8c}
   <a href="https://wa.me/966530244559" style="background:var(--yel);color:#0f0f0f">واتساب</a>
   <a href="tel:+966530244559" style="border:1px solid #444;color:#f3ede4">اتصل</a>
 </div>
+<script>
+const h=+new Intl.DateTimeFormat('en-GB',{hour:'numeric',hourCycle:'h23',timeZone:'Asia/Riyadh'}).format(new Date());
+const m=new Intl.DateTimeFormat('en-GB',{minute:'2-digit',timeZone:'Asia/Riyadh'}).format(new Date()).padStart(2,'0');
+const h12=h%12||12, ap=h<12?'ص':'م';
+document.getElementById('clk').innerHTML=h12+':'+m+'<small>'+ap+'</small>';
+const t=h<4?'نص الليل، وحنا فاتحين':h<6?'الفجر، وحنا فاتحين':h<11?'الصبح بدري، وحنا فاتحين':h<15?'الظهر، وحنا فاتحين':h<18?'العصر، وحنا فاتحين':h<21?'المغرب، وحنا فاتحين':'الليل، وحنا فاتحين';
+document.getElementById('msg').textContent=t;
+const d=document.getElementById('dial');let g='';
+for(let i=0;i<24;i++){const a=(i/24)*2*Math.PI-Math.PI/2,a2=((i+1)/24)*2*Math.PI-Math.PI/2-0.03,r=135,r2=100;
+const p=(r,a)=>[150+r*Math.cos(a),150+r*Math.sin(a)];const [x1,y1]=p(r,a),[x2,y2]=p(r,a2),[x3,y3]=p(r2,a2),[x4,y4]=p(r2,a);
+g+=`<path d="M${x1} ${y1}A${r} ${r} 0 0 1 ${x2} ${y2}L${x3} ${y3}A${r2} ${r2} 0 0 0 ${x4} ${y4}Z" fill="${i===h?'#e8c34a':'#262626'}"/>`;
+if(i%3===0){const [tx,ty]=p(84,a+0.13);g+=`<text x="${tx}" y="${ty}" fill="#8c8c8c" font-size="13" font-family="Cairo" text-anchor="middle" dominant-baseline="middle">${i}</text>`;}}
+g+=`<text x="150" y="140" fill="#f3ede4" font-size="40" font-weight="900" font-family="Cairo" text-anchor="middle">24</text><text x="150" y="172" fill="#8c8c8c" font-size="15" font-family="Cairo" text-anchor="middle">ساعة مفتوحين</text>`;
+d.innerHTML=g;
+</script>
 </body>
 </html>
